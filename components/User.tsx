@@ -1,6 +1,4 @@
-import { GetServerSideProps } from 'next';
 import Image from 'next/image';
-import type { Session } from 'next-auth';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import defaultUserPic from '../public/defualt.jpg';
 
