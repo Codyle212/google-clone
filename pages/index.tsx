@@ -1,19 +1,30 @@
 import Head from 'next/head';
 import { useRouter, NextRouter } from 'next/router';
 import Image from 'next/image';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import googleLogo from '../public/google_logo.svg';
 import {
     MagnifyingGlassIcon,
     MicrophoneIcon,
     CameraIcon,
 } from '@heroicons/react/20/solid';
-import { useRef } from 'react';
+import { MouseEventHandler, useRef } from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function Home() {
     const router: NextRouter = useRouter();
-    const searchInputRef = useRef(null);
+    const searchInputRef = useRef<HTMLInputElement>(null);
+
+    const search = (event: React.MouseEvent<HTMLElement>): void => {
+        event.preventDefault();
+
+        if (searchInputRef.current != null) {
+            // 👇️ using non-null (!) assertion
+            const term = searchInputRef.current?.value;
+            if (!term.trim()) return;
+            router.push(`/search?term=${term.trim()}`);
+        }
+    };
     return (
         <div>
             <Head>
@@ -47,7 +58,9 @@ export default function Home() {
                     <CameraIcon className="h-5" />
                 </div>
                 <div className="flex flex-col sm:flex-row w-[50%] space-y-2 mt-8 sm:space-y-0 sm:space-x-4 justify-center">
-                    <button className="btn">Google Search</button>
+                    <button onClick={search} className="btn">
+                        Google Search
+                    </button>
                     <button className="btn">{`I'm Feeling Lucky`}</button>
                 </div>
             </form>
