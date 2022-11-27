@@ -19,7 +19,7 @@ export default function Home() {
         event.preventDefault();
 
         if (searchInputRef.current != null) {
-            // 👇️ using non-null (!) assertion
+            // can  👇️ use a non-null (!) assertion instead of optional
             const term = searchInputRef.current?.value;
             if (!term.trim()) return;
             router.push(`/search?term=${term.trim()}`);
