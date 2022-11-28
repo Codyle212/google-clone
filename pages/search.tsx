@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import { useRouter, NextRouter } from 'next/router';
-import { Response } from '../Response';
+import { Response } from '../components/types/Response';
 import Head from 'next/head';
 import SearchHeader from '../components/SearchHeader';
 import SearchResults from '../components/SearchResults';

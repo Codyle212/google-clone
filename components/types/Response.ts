@@ -1,3 +1,5 @@
+//this is a Response from google customsearch which is being used for type assertion and as a mock Response
+
 export const Response = {
     kind: 'customsearch#search',
     url: {

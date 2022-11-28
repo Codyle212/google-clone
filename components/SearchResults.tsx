@@ -1,5 +1,5 @@
 import React from 'react';
-import { Response } from '../Response';
+import { Response } from './types/Response';
 
 interface SearchResultsProps {
     results: typeof Response;

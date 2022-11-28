@@ -1,7 +1,7 @@
 import { useRouter, NextRouter } from 'next/router';
 import { MagnifyingGlassIcon, PhotoIcon } from '@heroicons/react/24/outline';
 import SearchHeaderOption from './SearchHeaderOption';
-import { SearchCategory } from '../SearchCatagory';
+import { SearchCategory } from './types/SearchCatagory';
 
 const SearchHeaderOptions = (): JSX.Element => {
     const router: NextRouter = useRouter();
