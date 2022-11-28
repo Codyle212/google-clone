@@ -38,7 +38,6 @@ const SearchHeader = (): JSX.Element => {
             <div className="flex w-ful p-6 items-center">
                 <Image
                     src={googleLogo}
-                    priority
                     alt="google logo"
                     width={120}
                     height={40}

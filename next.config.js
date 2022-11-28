@@ -4,5 +4,6 @@ module.exports = {
     swcMinify: true,
     images: {
         domains: ['lh3.googleusercontent.com'], // <== Domain name
+        minimumCacheTTL: 600,
     },
 };
