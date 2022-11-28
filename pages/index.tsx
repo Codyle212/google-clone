@@ -21,7 +21,7 @@ export default function Home() {
         if (searchInputRef.current != null) {
             const term = searchInputRef.current.value;
             if (!term.trim()) return;
-            router.push(`/search?term=${term.trim()}`);
+            router.push(`/search?term=${term.trim()}&searchType=`);
         }
         // can  👇️ use a non-null (!) assertion instead of optional
         // const term = searchInputRef.current!.value;

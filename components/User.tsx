@@ -25,9 +25,7 @@ const User = (props: UserProps): JSX.Element => {
                     e.preventDefault();
                     signOut();
                 }}
-                className={`${
-                    props.className ? props.className : ''
-                } w-10 h-10 rounded-full hover:bg-gray-200 cursor-pointer p-1 `}
+                className={`w-10 h-10 rounded-full hover:bg-gray-200 cursor-pointer p-1 ${props.className}`}
             />
         );
     } else {
@@ -37,9 +35,7 @@ const User = (props: UserProps): JSX.Element => {
                     e.preventDefault();
                     signIn();
                 }}
-                className={`bg-blue-500 text-white whitespace-nowrap px-6 py-2 font-medium rounded-md hover:brightness-105 hover:shadow-md ${
-                    props.className ? props.className : ''
-                }`}
+                className={`bg-blue-500 text-white whitespace-nowrap px-6 py-2 font-medium rounded-md hover:brightness-105 hover:shadow-md ${props.className}`}
             >
                 Sign in
             </button>

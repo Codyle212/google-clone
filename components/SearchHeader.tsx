@@ -9,6 +9,7 @@ import {
     XMarkIcon,
 } from '@heroicons/react/20/solid';
 import User from './User';
+import SearchHeaderOptions from './SearchHeaderOptions';
 
 const SearchHeader = (): JSX.Element => {
     const router: NextRouter = useRouter();
@@ -29,7 +30,7 @@ const SearchHeader = (): JSX.Element => {
     const Search = () => {
         const term = searchInputRef.current!.value;
         if (!term.trim()) return;
-        router.push(`/search?term=${term.trim()}`);
+        router.push(`/search?term=${term.trim()}&searchType=`);
     };
 
     return (
@@ -67,6 +68,7 @@ const SearchHeader = (): JSX.Element => {
                 </form>
                 <User className="ml-auto" />
             </div>
+            <SearchHeaderOptions />
         </header>
     );
 };
