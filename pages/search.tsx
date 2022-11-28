@@ -26,6 +26,7 @@ export default function Search({ results }: SearchProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+    const startIndex = context.query.start || '1';
     const mockData = true;
     const data = mockData
         ? Response
@@ -34,7 +35,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
                   process.env.GOOGLE_SEARCH_API_KEY
               }&cx=${process.env.GOOGLE_SEARCH_CONTEXT_KEY}&q=${
                   context.query.term
-              }${context.query.searchType && '&searchType=image'}`
+              }${
+                  context.query.searchType && '&searchType=image'
+              }&start=${startIndex}`
           ).then((response) => response.json());
     return { props: { results: data } };
 };

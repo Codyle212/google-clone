@@ -1,7 +1,7 @@
 import React from 'react';
 import { Response } from './types/Response';
 import Parser from 'html-react-parser';
-
+import PaginationButtons from './PaginationButtons';
 interface SearchResultsProps {
     results: typeof Response;
 }
@@ -33,6 +33,7 @@ const SearchResults = ({ results }: SearchResultsProps): JSX.Element => {
                     </p>
                 </div>
             ))}
+            <PaginationButtons />
         </div>
     );
 };
