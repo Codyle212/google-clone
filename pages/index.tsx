@@ -7,7 +7,7 @@ import {
     MicrophoneIcon,
     CameraIcon,
 } from '@heroicons/react/20/solid';
-import { MouseEventHandler, useRef } from 'react';
+import { useRef } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -15,7 +15,7 @@ export default function Home() {
     const router: NextRouter = useRouter();
     const searchInputRef = useRef<HTMLInputElement>(null);
 
-    const search = (event: React.MouseEvent<HTMLElement>): void => {
+    const Search = (event: React.MouseEvent<HTMLElement>): void => {
         event.preventDefault();
 
         if (searchInputRef.current != null) {
@@ -61,7 +61,7 @@ export default function Home() {
                     <CameraIcon className="h-5" />
                 </div>
                 <div className="flex flex-col sm:flex-row w-[50%] space-y-2 mt-8 sm:space-y-0 sm:space-x-4 justify-center">
-                    <button onClick={search} className="btn">
+                    <button onClick={Search} className="btn">
                         Google Search
                     </button>
                     <button className="btn">{`I'm Feeling Lucky`}</button>

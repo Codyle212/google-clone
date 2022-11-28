@@ -1,8 +1,6 @@
 import User from './User';
 
-interface HeaderProps {}
-
-const Header = (props: HeaderProps): JSX.Element => {
+const Header = (): JSX.Element => {
     return (
         <header className="flex justify-between p-5 text-sm text-gray-700">
             <div className="flex space-x-4 items-center">

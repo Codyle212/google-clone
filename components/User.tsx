@@ -2,7 +2,11 @@ import Image from 'next/image';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import defaultUserPic from '../public/defualt.jpg';
 
-const User = (): JSX.Element => {
+interface UserProps {
+    className?: string;
+}
+
+const User = (props: UserProps): JSX.Element => {
     const { data: session, status } = useSession();
     const loading = status === 'loading';
 
@@ -12,29 +16,30 @@ const User = (): JSX.Element => {
 
     if (session && !loading) {
         return (
-            <div
-                onClick={(e) => {
+            <Image
+                src={session.user?.image || defaultUserPic}
+                alt={'profile-image'}
+                width={10}
+                height={10}
+                onClick={(e): void => {
                     e.preventDefault();
                     signOut();
                 }}
-            >
-                <Image
-                    src={session.user?.image || defaultUserPic}
-                    alt={'profile-image'}
-                    width={10}
-                    height={10}
-                    className="h-10 w-10 rounded-full hover:bg-gray-200 cursor-pointer p-1"
-                />
-            </div>
+                className={`${
+                    props.className ? props.className : ''
+                } w-10 h-10 rounded-full hover:bg-gray-200 cursor-pointer p-1 `}
+            />
         );
     } else {
         return (
             <button
-                onClick={(e) => {
+                onClick={(e): void => {
                     e.preventDefault();
                     signIn();
                 }}
-                className="bg-blue-500 text-white px-6 py-2 font-medium rounded-md hover:brightness-105 hover:shadow-md"
+                className={`bg-blue-500 text-white whitespace-nowrap px-6 py-2 font-medium rounded-md hover:brightness-105 hover:shadow-md ${
+                    props.className ? props.className : ''
+                }`}
             >
                 Sign in
             </button>
