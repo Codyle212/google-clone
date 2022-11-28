@@ -1,30 +1,32 @@
 import React from 'react';
+import { GetServerSideProps } from 'next';
+import { useRouter, NextRouter } from 'next/router';
 import { Response } from '../Response';
 import Head from 'next/head';
 import SearchHeader from '../components/SearchHeader';
-import { GetServerSideProps } from 'next';
+import SearchResults from '../components/SearchResults';
 
 interface SearchProps {
-    results: Object;
+    results: typeof Response;
 }
 
-export default function search({ results }: SearchProps) {
-    console.log(results);
+export default function Search({ results }: SearchProps) {
+    const router: NextRouter = useRouter();
     return (
         <div>
             <Head>
-                <title>Search Page</title>
+                <title>{router.query.term} - Search Page</title>
             </Head>
             {/* Search Header */}
             <SearchHeader />
             {/* Search Results */}
+            <SearchResults results={results} />
         </div>
     );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const mockData = true;
-
     const data = mockData
         ? Response
         : await fetch(
