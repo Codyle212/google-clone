@@ -44,7 +44,6 @@ export default function Home() {
             <form className="flex flex-col items-center mt-40">
                 <Image
                     src={googleLogo}
-                    objectFit="cover"
                     alt="google logo"
                     width={300}
                     height={100}
