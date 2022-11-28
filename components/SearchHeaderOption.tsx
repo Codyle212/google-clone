@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter, NextRouter } from 'next/router';
-import { SearchCategory } from './SearchCatagory';
+import { SearchCategory } from '../SearchCatagory';
 
 type Catagory = keyof typeof SearchCategory;
 
