@@ -14,7 +14,6 @@ interface SearchProps {
 
 export default function Search({ results }: SearchProps) {
     const router: NextRouter = useRouter();
-    console.log(results);
     return (
         <div>
             <Head>
