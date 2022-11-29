@@ -13,7 +13,7 @@ const SearchResults = ({ results }: SearchResultsProps): JSX.Element => {
                 About {results.searchInformation.formattedTotalResults} results
                 ({results.searchInformation.formattedSearchTime} seconds)
             </p>
-            {results.items.map((result, index) => (
+            {results.items?.map((result, index) => (
                 <div key={index} className="max-w-xl mb-8 ">
                     <div className="group">
                         <a href={result.link} className="text-sm truncate">
