@@ -1,22 +1,37 @@
 import User from './User';
+import Link from 'next/link';
+import { useRouter, NextRouter } from 'next/router';
 
 const Header = (): JSX.Element => {
+    const router: NextRouter = useRouter();
     return (
         <header className="flex justify-between p-5 text-sm text-gray-700">
             <div className="flex space-x-4 items-center">
-                <a href="https://about.google/">
+                <Link href="https://about.google/">
                     <p className="link">About</p>
-                </a>
-                <a href="https://store.google.com/">
+                </Link>
+
+                <Link href="https://store.google.com/">
                     <p className="link">Store</p>
-                </a>
+                </Link>
             </div>
             <div className="flex space-x-4 items-center">
-                <a href="https://mail.google.com/">
+                <Link href="https://mail.google.com/">
                     <p className="link">Gmail</p>
-                </a>
+                </Link>
 
-                <p className="link">images</p>
+                <p
+                    onClick={() =>
+                        router.push(
+                            `/search?term=${
+                                router.query.term || 'google'
+                            }&searchType=image`
+                        )
+                    }
+                    className="link"
+                >
+                    images
+                </p>
                 <User />
             </div>
         </header>

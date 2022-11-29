@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import axios, { AxiosResponse } from 'axios';
 import { useRouter, NextRouter } from 'next/router';
 import Image from 'next/image';
 import googleLogo from '../public/google_logo.svg';
@@ -14,6 +15,20 @@ import Footer from '../components/Footer';
 export default function Home() {
     const router: NextRouter = useRouter();
     const searchInputRef = useRef<HTMLInputElement>(null);
+    interface Word {
+        word: string;
+    }
+    const randomSearch = async (event: React.MouseEvent<HTMLElement>) => {
+        event.preventDefault();
+
+        const response: AxiosResponse = await axios.get<Word>(
+            'https://random-word-api.herokuapp.com/word'
+        );
+        // one word in array
+        const word = [response.data];
+        if (!word) return;
+        router.push(`/search?term=${word}&searchType=`);
+    };
 
     const Search = (event: React.MouseEvent<HTMLElement>): void => {
         event.preventDefault();
@@ -63,7 +78,9 @@ export default function Home() {
                     <button onClick={Search} className="btn">
                         Google Search
                     </button>
-                    <button className="btn">{`I'm Feeling Lucky`}</button>
+                    <button onClick={randomSearch} className="btn">
+                        I&apos;m Feeling Lucky
+                    </button>
                 </div>
             </form>
             {/*Footer*/}
