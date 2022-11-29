@@ -5,5 +5,6 @@ namespace NodeJS {
         JWT_SECRET: string;
         GOOGLE_SEARCH_API_KEY: string;
         GOOGLE_SEARCH_CONTEXT_KEY: string;
+        NEXTAUTH_URL: string;
     }
 }
